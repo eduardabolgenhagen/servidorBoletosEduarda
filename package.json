@@ -1,0 +1,22 @@
+{
+  "name": "servidorboletoseduarda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduardabolgenhagen/servidorBoletosEduarda.git"
+  },
+  "author": "Eduarda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eduardabolgenhagen/servidorBoletosEduarda/issues"
+  },
+  "homepage": "https://github.com/eduardabolgenhagen/servidorBoletosEduarda#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
