@@ -8,7 +8,7 @@ const listaPessoas = [
         cpf: "123.456.789-00"
     },
     {
-        id : 3,
+        id : 2,
         nome: "Ester",
         cpf: "123.456.789-00"
     }
@@ -27,7 +27,7 @@ function vizualizarLista(){
 router.get('/:id', (req, res) => {
     const id = req.params.id;
     res.send(vizualizarPessoaId(id));
-})]
+})
 
 function vizualizarPessoaId(id){
     const pessoa = listaPessoas.find(p => p.id == id);
