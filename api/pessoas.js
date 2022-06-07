@@ -21,17 +21,43 @@ router.get('/', (req, res) => {
 
 function vizualizarLista(){
     return listaPessoas;
-}
+};
 
 //GET PESSOA POR ID
 router.get('/:id', (req, res) => {
     const id = req.params.id;
     res.send(vizualizarPessoaId(id));
-})
+});
 
 function vizualizarPessoaId(id){
     const pessoa = listaPessoas.find(p => p.id == id);
     return pessoa;
+};
+
+//POST PESSOA
+router.post('/', (req, res) => {
+    const pessoa = req.body;
+    res.json(inserirPessoa(pessoa));
+});
+
+function inserirPessoa(pessoa){
+    pessoa.id = listaPessoas.length +1;
+    listaPessoas.push(pessoa);
+    return listaPessoas;
+};
+
+//PUT PESSOA
+router.put('/alterarDados/:id', (req, res) => {
+    const id = req.params.id;
+    const pessoa = req.body;
+    res.json(alterarDadosPessoa(id, pessoa));
+});
+
+function alterarDadosPessoa(id, pessoa){
+    const index = listaPessoas.findIndex(p => p.id ==id);
+    pessoa.id = id;
+    listaPessoas[index] = pessoa;
+    return listaPessoas;
 }
 
 module.exports = {
