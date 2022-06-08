@@ -37,7 +37,7 @@ function vizualizarPessoaId(id){
 //POST PESSOA
 router.post('/', (req, res) => {
     const pessoa = req.body;
-    res.json(inserirPessoa(pessoa));
+    res.send(inserirPessoa(pessoa));
 });
 
 function inserirPessoa(pessoa){
@@ -47,20 +47,33 @@ function inserirPessoa(pessoa){
 };
 
 //PUT PESSOA
-router.put('/alterarDados/:id', (req, res) => {
+router.put('/alterar/:id', (req, res) => {
     const id = req.params.id;
     const pessoa = req.body;
-    res.json(alterarDadosPessoa(id, pessoa));
+    res.send(alterarDadosPessoa(id, pessoa));
 });
 
 function alterarDadosPessoa(id, pessoa){
-    const index = listaPessoas.findIndex(p => p.id ==id);
+    const index = listaPessoas.findIndex(pessoa => pessoa.id ==id);
     pessoa.id = id;
     listaPessoas[index] = pessoa;
+    return pessoa;
+};
+
+//DELETE PESSOA
+router.delete('/deletar/:id', (req, res) => {
+    const id = req.params.id;
+    res.send(deletarPessoa(id));
+});
+
+function deletarPessoa(id){
+    const index = listaPessoas.findIndex(pessoa => pessoa.id == id);
+    listaPessoas.splice(index, 1);
     return listaPessoas;
 }
 
 module.exports = {
     router,
     vizualizarLista
+    // deletarPessoa
 }
