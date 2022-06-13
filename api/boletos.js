@@ -6,7 +6,7 @@ const listaBoletos = [
         id : 1,
         valor: "1000",
         idUsuario: 1,
-        idPessoa: 1,
+        idPessoa: 5,
         nomePessoa: "a",
         status: "aberto"
     },
@@ -14,8 +14,16 @@ const listaBoletos = [
         id : 2,
         valor: "2000",
         idUsuario: 2,
-        idPessoa: 2,
+        idPessoa: 5,
         nomePessoa: "b",
+        status: "aberto"
+    },
+    {
+        id : 3,
+        valor: "3000",
+        idUsuario: 2,
+        idPessoa: 1,
+        nomePessoa: "c",
         status: "aberto"
     }
 ];
@@ -39,6 +47,31 @@ function vizualizarBoletosId(id){
     const boleto = listaBoletos.find(boleto => boleto.id == id);
     return boleto;
 };
+
+//GET BOLETOS POR ID DA PESSOA
+router.get('/pessoa/:idPessoa', (req, res) => {
+    const idPessoa = req.params.id;
+    res.send(vizualizarBoletosPessoa(idPessoa));
+})
+
+function vizualizarBoletosPessoa(idPessoa){
+    const listaBoletosPessoa = [];
+    listaBoletos.forEach(listaBoletos => {
+        if (listaBoletos.idPessoa == idPessoa){
+                let boleto = listaBoletos.params;
+                listaBoletosPessoa.push(boleto);
+         }
+    });
+    console.log(listaBoletosPessoa);
+    return listaBoletosPessoa;
+}
+
+// (let i = 0; i < listaBoletos.length; i++){
+//     if (listaBoletos.idPessoa == idPessoa){
+//         let boleto = listaBoletos.i;
+//         listaBoletosPessoa.push(boleto);
+//     }
+// }
 
 //POST BOLETO
 router.post('/', (req, res) => {
