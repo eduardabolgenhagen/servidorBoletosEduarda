@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const vizualizarPessoaId = require('./pessoas');
 
 const listaBoletos = [
     {
@@ -64,13 +65,6 @@ function vizualizarBoletosPessoa(idPessoa){
     return listaBoletosPessoa;
 }
 
-// (let i = 0; i < listaBoletos.length; i++){
-//     if (listaBoletos.idPessoa == idPessoa){
-//         let boleto = listaBoletos.i;
-//         listaBoletosPessoa.push(boleto);
-//     }
-// }
-
 //POST BOLETO
 router.post('/', (req, res) => {
     const boleto = req.body;
@@ -78,9 +72,13 @@ router.post('/', (req, res) => {
 });
 
 function inserirBoleto(boleto){
-    boleto.id = listaBoletos.length + 1;
-    listaBoletos.push(boleto);
-    return listaBoletos;
+    if(boleto.valor <= 0 || vizualizarPessoaId.id != ""){
+        console.log("Erro ao criar boleto, confira os dados.")
+    } else{
+        boleto.id = listaBoletos.length + 1;
+        listaBoletos.push(boleto);
+        return listaBoletos;
+    }    
 }
 
 //PUT BOLETO
@@ -111,5 +109,6 @@ function deletarBoletos(id){
 
 module.exports = {
     router,
-    vizualizarLista
+    vizualizarLista,
 }
+
