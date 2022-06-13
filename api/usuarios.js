@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { listaBoletos } = require("./listaBoletos");
 
 const listaUsuarios = [
     {
@@ -71,9 +72,13 @@ router.delete('/:id', (req, res) => {
 });
 
 function deletarUsuario(id){
-    const index = listaUsuarios.findIndex(usuario => usuario.id == id);
-    listaUsuarios.splice(index, 1);
-    return listaUsuarios;
+    if(listaBoletos.find(boleto => boleto.idUsuario == id)){
+        console.log("Não é possível deletar usuário com boleto em aberto")
+    } else {
+        const index = listaUsuarios.findIndex(usuario => usuario.id == id);
+        listaUsuarios.splice(index, 1);
+        return listaUsuarios;
+    }  
 }
 
 module.exports = {

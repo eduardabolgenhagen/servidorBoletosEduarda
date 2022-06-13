@@ -24,7 +24,7 @@ const listaBoletos = [
         idUsuario: 2,
         idPessoa: 1,
         nomePessoa: "c",
-        status: "aberto"
+        status: "pago"
     }
 ]
 

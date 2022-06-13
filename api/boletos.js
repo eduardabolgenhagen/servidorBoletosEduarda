@@ -50,6 +50,7 @@ function inserirBoleto(boleto){
         console.log("Erro ao criar boleto, confira os dados.")
     } else{
         boleto.id = listaBoletos.length + 1;
+        boleto.nomePessoa = vizualizarPessoaId.id;
         listaBoletos.push(boleto);
         return listaBoletos;
     }    
