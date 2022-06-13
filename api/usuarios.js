@@ -36,12 +36,12 @@ function vizualizarUsuarioId(id){
 
 //POST USUARIOS
 router.post('/', (req, res) => {
-    const usuarios = req.body;
+    const usuario = req.body;
     res.send(inserirUsuario(usuario));
 });
 
 function inserirUsuario(usuario){
-    usuario.id = listaUsuarios.length +1;
+    usuario.id = listaUsuarios.length + 1;
     listaUsuarios.push(usuario);
     return listaUsuarios;
 };

@@ -7,7 +7,7 @@ const usuarios = require('./api/usuarios');
 
 app.use(express.json());
 app.use('/api/pessoas', pessoas.router);
-app.use('/api/usuarios', usuarios.router)
+app.use('/api/usuarios', usuarios.router);
 
 app.listen(port, () => {
     console.log("Example, app listening at https://localhost: " + port);
