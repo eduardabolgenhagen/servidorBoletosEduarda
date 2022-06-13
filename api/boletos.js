@@ -49,20 +49,18 @@ function vizualizarBoletosId(id){
 };
 
 //GET BOLETOS POR ID DA PESSOA
-router.get('/pessoa/:idPessoa', (req, res) => {
+router.get('/pessoa/:id', (req, res) => {
     const idPessoa = req.params.id;
     res.send(vizualizarBoletosPessoa(idPessoa));
 })
 
 function vizualizarBoletosPessoa(idPessoa){
     const listaBoletosPessoa = [];
-    listaBoletos.forEach(listaBoletos => {
-        if (listaBoletos.idPessoa == idPessoa){
-                let boleto = listaBoletos.params;
+    listaBoletos.forEach(boleto => {
+        if(boleto.idPessoa == idPessoa){
                 listaBoletosPessoa.push(boleto);
-         }
+            }
     });
-    console.log(listaBoletosPessoa);
     return listaBoletosPessoa;
 }
 
