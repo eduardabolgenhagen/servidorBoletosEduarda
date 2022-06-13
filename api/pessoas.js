@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
 });
 
 function vizualizarPessoaId(id){
-    const pessoa = listaPessoas.find(p => p.id == id);
+    const pessoa = listaPessoas.find(pessoa => pessoa.id == id);
     return pessoa;
 };
 

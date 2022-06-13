@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
 });
 
 function vizualizarUsuarioId(id){
-    const usuario = listaUsuarios.find(p => p.id == id);
+    const usuario = listaUsuarios.find(usuarios => usuarios.id == id);
     return usuario;
 };
 
@@ -44,7 +44,7 @@ function inserirUsuario(usuario){
     usuario.id = listaUsuarios.length + 1;
     listaUsuarios.push(usuario);
     return listaUsuarios;
-};
+}
 
 //PUT USUARIOS
 router.put('/alterar/:id', (req, res) => {
