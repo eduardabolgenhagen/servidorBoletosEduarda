@@ -1,33 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const vizualizarPessoaId = require('./pessoas');
-
-const listaBoletos = [
-    {
-        id : 1,
-        valor: "1000",
-        idUsuario: 1,
-        idPessoa: 5,
-        nomePessoa: "a",
-        status: "aberto"
-    },
-    {
-        id : 2,
-        valor: "2000",
-        idUsuario: 2,
-        idPessoa: 5,
-        nomePessoa: "b",
-        status: "aberto"
-    },
-    {
-        id : 3,
-        valor: "3000",
-        idUsuario: 2,
-        idPessoa: 1,
-        nomePessoa: "c",
-        status: "aberto"
-    }
-];
+const { listaBoletos } = require('./listaBoletos');
 
 //GET DA LISTA DE BOLETOS
 router.get('/', (req, res) => {
@@ -109,6 +83,6 @@ function deletarBoletos(id){
 
 module.exports = {
     router,
-    vizualizarLista,
+    vizualizarLista
 }
 

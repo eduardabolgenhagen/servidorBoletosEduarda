@@ -71,7 +71,7 @@ router.delete('/:id', (req, res) => {
 });
 
 function deletarPessoa(id){
-    const index = listaPessoas.findIndex(pessoa => pessoa.id == id);
+    const idPessoa = listaPessoas.findIndex(pessoa => pessoa.id == id);
     listaPessoas.splice(index, 1);
     return listaPessoas;
 }
