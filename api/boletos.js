@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const vizualizarPessoaId = require('./pessoas');
-const {listaBoletos} = require('./listaboletos')
 
 const listaBoletos = [
     {
