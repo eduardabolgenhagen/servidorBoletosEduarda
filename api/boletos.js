@@ -53,7 +53,7 @@ function inserirBoleto(boleto){
 }
 
 //PUT BOLETO
-router.put('/alterar/:id', (req, res) => {
+router.put('/:id', (req, res) => {
     const id = req.params.id;
     const boleto = req.body;
     res.send(alterarDadosBoleto(id, boleto));
@@ -67,7 +67,7 @@ function alterarDadosBoleto(id, boleto){
 };
 
 //DELETE BOLETOS
-router.delete('/deletar/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     const id = req.params.id;
     res.send(deletarBoletos(id));
 });

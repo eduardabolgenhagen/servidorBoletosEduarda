@@ -37,7 +37,11 @@ function vizualizarPessoaId(id){
 //POST PESSOA
 router.post('/', (req, res) => {
     const pessoa = req.body;
-    res.send(inserirPessoa(pessoa));
+    if(pessoa.nome != "" && pessoa.cpf != ""){
+        res.send(inserirPessoa(pessoa));
+    } else{
+        console.log("Erro ao criar pessoa.")
+    }
 });
 
 function inserirPessoa(pessoa){
@@ -47,7 +51,7 @@ function inserirPessoa(pessoa){
 };
 
 //PUT PESSOA
-router.put('/alterar/:id', (req, res) => {
+router.put('/:id', (req, res) => {
     const id = req.params.id;
     const pessoa = req.body;
     res.send(alterarDadosPessoa(id, pessoa));
@@ -61,7 +65,7 @@ function alterarDadosPessoa(id, pessoa){
 };
 
 //DELETE PESSOA
-router.delete('/deletar/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     const id = req.params.id;
     res.send(deletarPessoa(id));
 });

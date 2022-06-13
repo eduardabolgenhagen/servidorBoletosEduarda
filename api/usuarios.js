@@ -37,7 +37,11 @@ function vizualizarUsuarioId(id){
 //POST USUARIOS
 router.post('/', (req, res) => {
     const usuario = req.body;
-    res.send(inserirUsuario(usuario));
+    if(usuario.nome != "" && usuario.senha != ""){
+        res.send(inserirUsuario(usuario));
+    } else{
+        console.log("Erro ao criar usuário.")
+    } 
 });
 
 function inserirUsuario(usuario){
@@ -47,7 +51,7 @@ function inserirUsuario(usuario){
 }
 
 //PUT USUARIOS
-router.put('/alterar/:id', (req, res) => {
+router.put('/:id', (req, res) => {
     const id = req.params.id;
     const usuario = req.body;
     res.send(alterarDadosUsuario(id, usuario));
@@ -61,7 +65,7 @@ function alterarDadosUsuario(id, usuario){
 };
 
 //DELETE USUARIOS
-router.delete('/deletar/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     const id = req.params.id;
     res.send(deletarUsuario(id));
 });
