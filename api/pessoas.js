@@ -75,5 +75,4 @@ function deletarPessoa(id){
 module.exports = {
     router,
     vizualizarLista
-    // deletarPessoa
 }
