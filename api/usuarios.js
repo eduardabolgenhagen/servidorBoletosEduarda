@@ -83,5 +83,6 @@ function deletarUsuario(id){
 
 module.exports = {
     router,
-    vizualizarLista
+    vizualizarLista,
+    vizualizarUsuarioId
 }

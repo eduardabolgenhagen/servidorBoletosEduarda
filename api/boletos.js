@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const vizualizarPessoaId = require('./pessoas');
 const { listaBoletos } = require('./listaBoletos');
+const { vizualizarUsuarioId } = require("./usuarios");
 
 //GET DA LISTA DE BOLETOS
 router.get('/', (req, res) => {
@@ -46,13 +47,20 @@ router.post('/', (req, res) => {
 });
 
 function inserirBoleto(boleto){
-    if(boleto.valor <= 0 || vizualizarPessoaId.id != ""){
-        console.log("Erro ao criar boleto, confira os dados.")
+    if(boleto.valor <= 0 && boleto.idPessoa != "" && boleto.idUser != ""){
+        if(vizualizarPessoaId(boleto.idPessoa) == undefined){
+            console.log("Pessoa não encontrada.");
+        } else if (vizualizarUsuarioId(boleto.idUsuario) == undefined){
+            console.log("Usuário não encontrado.")
+        } else{
+            const pessoa = vizualizarPessoaId(boleto.idPessoa);
+            boleto.nome = pessoa.nome;
+            boleto.id = listaBoletos.length + 1;
+            listaBoletos.push(boleto);
+            return listaBoletos;
+        }
     } else{
-        boleto.id = listaBoletos.length + 1;
-        boleto.nomePessoa = vizualizarPessoaId.id;
-        listaBoletos.push(boleto);
-        return listaBoletos;
+        console.log("Erro nos dados inseridos.")
     }    
 }
 
