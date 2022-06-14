@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const vizualizarPessoaId = require('./pessoas');
+const { vizualizarPessoaId } = require('./pessoas');
 const { listaBoletos } = require('./listaBoletos');
 const { vizualizarUsuarioId } = require("./usuarios");
 
@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
 });
 
 function inserirBoleto(boleto){
-    if(boleto.valor <= 0 && boleto.idPessoa != "" && boleto.idUser != ""){
+    if(boleto.valor > 0 && boleto.idPessoa != "" && boleto.idUser != ""){
         if(vizualizarPessoaId(boleto.idPessoa) == undefined){
             console.log("Pessoa não encontrada.");
         } else if (vizualizarUsuarioId(boleto.idUsuario) == undefined){
